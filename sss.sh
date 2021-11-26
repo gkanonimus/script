@@ -1,8 +1,8 @@
 #!/bin/bash
 path="$1"
-if [[ !(-e $1) || !(-f $1) ]]
+if [[ !(-e $1) ]]
 then
-    echo "File $1 doesn't exist or not a file!"
+    echo "Directory $1 doesn't exist or not a file!"
     exit
 fi
 loop_folder_recurse() {
@@ -19,3 +19,5 @@ loop_folder_recurse() {
 }
 echo "Base path: $path"
 loop_folder_recurse "$path"
+echo "The largest file is : "
+find ~/test -type f -printf "%s %p\n" | sort -rn | head -n 1
